@@ -28,7 +28,14 @@ int prevLeftJoyYValue = 0;
 int prevRightJoyXValue = 0;
 int prevRightJoyYValue = 0;
 
-const int significantJoystickMovementThreshold = 20;
+/* This value is the absolute difference between the current joystick 
+position and the previous joystick position. It is used to indicate 
+a significant change in joystick position, and the servo position is 
+updated accordingly. This helps prevent small fluctuations in joystick 
+position from continuously triggering servo movements when the joystick 
+is not being actively controlled. */
+const int significantJoystickMovementThreshold = 10;
+
 int pushButton = 8;
 bool isButtonPressed = false;
 
@@ -91,4 +98,6 @@ void loop() {
     }
     delay(200);  // Debounce delay
   }
+
+  delay(10); // Adjust the delay as needed for smoother control
 }
