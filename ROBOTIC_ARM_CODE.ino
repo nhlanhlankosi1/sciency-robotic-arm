@@ -45,8 +45,8 @@ void setup() {
   servo3.attach(servo3Pin);
   servo4.attach(servo4Pin);
   servo5.attach(servo5Pin);
-  pinMode(pushButton, INPUT)
-    Serial.begin(9600);
+  pinMode(pushButton, INPUT);
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -90,14 +90,14 @@ void loop() {
   // Button logic for controlling servo5 (hand servo)
   if (pushButtonValue == HIGH) {
     if (isButtonPressed) {
-      servo5.write(0);  // Open hand (move to 0 degrees)
+      servo5.write(0);  // Close hand (move to 0 degrees)
       isButtonPressed = false;
     } else {
-      servo5.write(30);  // Close hand (move to 30 degrees)
+      servo5.write(30);  // Open hand (move to 30 degrees)
       isButtonPressed = true;
     }
     delay(200);  // Debounce delay
   }
 
-  delay(10); // Adjust the delay as needed for smoother control
+  delay(10);  // Adjust the delay as needed for smoother control
 }
